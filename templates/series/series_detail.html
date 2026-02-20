@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="card" style="width: 18rem;">
+    {% if product.image %}
+    <img src="{{series.image.url}}" class="card-img-top" alt="...">
+    {% else %}
+    <img src="/media/empty_image.jpg" class="card-img-top" alt="...">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ product.name }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text">Price: {{ product.price }}</p>
+
+    </div>
+</div>
+{% endblock %}

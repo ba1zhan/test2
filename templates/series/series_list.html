@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="GET" action="" enctype="multipart/form-data">
+    {{ forms.as_p }}
+    <button type="submit">Поиск</button>
+</form>
+
+{% for pr in products %}
+
+<div class="card" style="width: 18rem;">
+    {% if pr.image %}
+    <img src="{{pr.image.url}}" class="card-img-top" alt="...">
+    {% else %}
+    <img src="/media/empty_image.jpg" class="card-img-top" alt="...">
+    {% endif %}
+    <div class="card-body">
+        <h5 class="card-title">{{ pr.name }}</h5>
+        <p class="card-text">{{ pr.description }}</p>
+        <p class="card-text">{{ pr.price }}</p>
+        <a href="/series/{{pr.id}}" class="btn btn-primary">Посмотреть</a>
+        <a href="/series_delete/{{pr.id}}" class="btn btn-primary">Удалить</a>
+    </div>
+</div>
+{% endfor %}
+
+
+<nav aria-label="...">
+    <ul class="pagination pagination-lg">
+        {% for page in list_pages %}
+        <li class="page-item">
+            <a class="page-link" aria-current="page" href="/series/?page={{ page }}">{{ page }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</nav>
+
+
+{% endblock %}
