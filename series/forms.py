@@ -12,7 +12,7 @@ class CreateSeriesForm(forms.ModelForm):
 
     class Meta:
         model = Series
-        fields = ["name", "description", "image", "price"]
+        fields = ["name", "description", "image"]
 
 
 class SearchForm(forms.Form):

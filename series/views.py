@@ -60,12 +60,6 @@ def series_list(request):
         category_id = request.GET.get("category_id")
         if category_id:
             series = Series.objects.filter(category_id=category_id)
-        price_choice = request.GET.get("price_choice")
-        if price_choice:
-            if price_choice == "1":
-                series = Series.objects.filter(price__gt=100)
-            elif price_choice == "2":
-                series = Series.objects.filter(price__lt=100)
         tags = request.GET.getlist("tags")
         if tags:
             series = Series.objects.filter(tags__in=tags)
